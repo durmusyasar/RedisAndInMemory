@@ -1,0 +1,17 @@
+﻿@using IDistributedCacheRedisApp.Web.Models;
+
+@{
+    ViewData["Title"] = "Show";
+    Product product = ViewBag.Product as Product;
+    Product productByte = ViewBag.ProductByte as Product;
+}
+
+<h1>Show</h1>
+<p>Cache</p>
+<h3>@ViewBag.Cache</h3>
+
+<p>Product Object (Json)</p>
+<h1>@product.Id => @product.Name => @product.Price</h1>
+
+<p>Product Object (Binary)</p>
+<h1>@productByte.Id => @productByte.Name => @productByte.Price</h1>
