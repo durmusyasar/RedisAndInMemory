@@ -8,19 +8,18 @@ namespace RedisExchangeAPI.Web.Services
         private readonly string redisHost;
         private readonly string redisPort;
         public IDatabase Db { get; set; }
+        public string Url { get; set; }
 
         private ConnectionMultiplexer redis;
 
-        public RedisService(IConfiguration configuration)
+        public RedisService(string url)
         {
-            redisHost = configuration["Redis:Host"];
-            redisPort = configuration["Redis:Port"];
+            Url = url;
         }
 
         public void Connect()
         {
-            var configString = $"{redisHost}:{redisPort}";
-            redis = ConnectionMultiplexer.Connect(configString);
+            redis = ConnectionMultiplexer.Connect(Url);
         }
 
         public IDatabase GetDb(int db)
